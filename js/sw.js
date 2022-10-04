@@ -2,20 +2,24 @@
 self.addEventListener('fetch', event => {
 
 
-   if(event.request.url.includes('.jpg')){
-    console.log(event.request.url);
-
-    //let fotoReq = fetch('ima/main.jpg');
-    //let fotoReq = fetch(event.request.url);
-    let fotoReq = fetch(event.request);
+   if(event.request.url.includes('styles.css')){
     
-    event.respondWith( fotoReq);
+    let respuesta = new Response(`
+    body{
+        background-color: red !important;
+        color: pink;
+
+    }
+    `, { 
+        headers: {
+            'Content-Type': 'test/css'
+        }
+   });
+    
+    event.respondWith( respuesta);
    }
 
     
-   
-
-
 
 });
 
